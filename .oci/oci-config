@@ -1,0 +1,6 @@
+[DEFAULT]
+user=
+fingerprint=
+tenancy=
+key_file=/opt/oci-ssl-ctl/.oci/oci_api_key.pem
+region=
