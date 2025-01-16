@@ -23,3 +23,34 @@ Teste adequadamente todo o conteúdo em ambiente apropriado e integre os scripts
 Este não é um aplicativo oficial da Oracle e por isso, não conta com o seu suporte. A Oracle não se responsabiliza por nenhum conteúdo aqui presente.
 
 ## Procedimento de Instalação
+
+Para que o script possa integragir com os serviços OCI Certificates e OCI DNS siga os seguintes passos:
+
+Usando o OCI IAM Identity Domain siga os seguintes passos:
+
+1) Crie um grupo para o usuário do serviço:
+
+Nome sugerido: oci-ssl-ctl-group
+
+2) Crie uma conta de usuário e adicione essa conta de usuário no grupo criado no passo anterior.
+
+Nome sugerido: oci-ssl-ctl-user
+
+Ajustes Sugestões:
+
+- Use uma conta de e-mail valida para receber eventuais notificações da OCI para esse usuário.
+- Deixe habilitando somente a Capabilite de "API Key" removendo assim acessos desnecessários.
+ 
+3 - Crie uma API Key para o usuário oci-ssl-ctl-user e salve a chave privada e fingerprint com muito cuidado, pois essas informações sensiveis serão usadas nos passos seguintes.
+
+
+4 - Em Identity e Security > Policy crie uma nova política com o nome oci-ssl-ctl-policies e as seguintes regras, substituindo as variaveis SSL_CERTIFICATES_TARGET_COMPARTMENT_ID e DNS_ZONES_COMPARTMENT_ID pelos OCIDs dos comaprtments correspondentes.
+
+Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT
+Allow group Default/oci-ssl-ctl-group to use dns in compartment id $DNS_ZONES_COMPARTMENT
+
+
+O procedimento de instação leva em consideração ums máquina virtual usando Oracle Linux 9
+
