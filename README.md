@@ -43,16 +43,15 @@ Ajustes Sugestões:
 3 - Crie uma API Key para o usuário oci-ssl-ctl-user e salve a chave privada e fingerprint com muito cuidado, pois essas informações sensiveis serão usadas nos passos seguintes.
 
 
-4 - Em Identity e Security > Policy crie uma nova política com o nome oci-ssl-ctl-policies e as seguintes regras, substituindo as variaveis SSL_CERTIFICATES_TARGET_COMPARTMENT_ID e DNS_ZONES_COMPARTMENT_ID pelos OCIDs dos comaprtments correspondentes.
+4 - Em "Identity & Security" > "Policies" crie uma nova política com o nome oci-ssl-ctl-policies e adicione as seguintes regras. Se preferir substitia o contexto "in tenancy" pelos compartments correspondentes:
 
-Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in tenancy
+Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in tenancy
+Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in tenancy
+Allow group Default/oci-ssl-ctl-group to use dns in compartment id tenancy
 
-Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
 
-Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
-
-Allow group Default/oci-ssl-ctl-group to use dns in compartment id $DNS_ZONES_COMPARTMENT_ID
-
+5 - 
 
 O procedimento de instação leva em consideração ums máquina virtual usando Oracle Linux 9
 
