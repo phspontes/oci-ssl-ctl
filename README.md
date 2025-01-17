@@ -45,10 +45,10 @@ Ajustes Sugestões:
 
 4)  Em "Identity & Security" > "Policies" crie uma nova política com o nome oci-ssl-ctl-policies e adicione as seguintes regras. Se preferir substitia o contexto "in tenancy" pelos compartments correspondentes:
 
-Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in Tenancy  
-Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in Tenancy  
-Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in Tenancy  
-Allow group Default/oci-ssl-ctl-group to use dns in Tenancy  
+	Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in Tenancy  
+	Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in Tenancy  
+	Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in Tenancy  
+	Allow group Default/oci-ssl-ctl-group to use dns in Tenancy  
 
 Os demais passos  procedimento de instação leva em consideração ums máquina virtual usando Oracle Linux 9
 
