@@ -29,17 +29,17 @@ Usando o OCI IAM Identity Domain siga os seguintes passos:
 
 1) Crie um grupo para o usuário do serviço:
 
-Nome sugerido: oci-ssl-ctl-group
+	Nome sugerido: oci-ssl-ctl-group
 
 2) Crie uma conta de usuário e adicione essa conta de usuário no grupo criado no passo anterior.
 
-Nome sugerido: oci-ssl-ctl-user
+	Nome sugerido: oci-ssl-ctl-user
 
-Ajustes Sugestões:
+	Ajustes Sugestões:
 
-- Desmarque o opção "Use the email address as the username"
-- Use uma conta de e-mail valida para receber eventuais notificações da OCI para esse usuário.
-- Em "Edit user capabilities" deixe habilitando somente o "API Keys" removendo assim acessos desnecessários.
+	- Desmarque o opção "Use the email address as the username"
+	- Use uma conta de e-mail valida para receber eventuais notificações da OCI para esse usuário.
+	- Em "Edit user capabilities" deixe habilitando somente o "API Keys" removendo assim acessos desnecessários.
  
 3) Crie uma API Key para o usuário oci-ssl-ctl-user e salve a chave privada e finger print com muito cuidado, pois essas informações sensiveis serão usadas nos passos seguintes.
 
