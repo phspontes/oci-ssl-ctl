@@ -95,3 +95,24 @@ Se as zonas de DNS estiverem em outro no AWS Route 53, preencha os sequintes arq
 11.5 - .oci/aws-config
 
 11.6 - .oci/route53-dns.multi.ini
+
+12 - Após preencher e validar as informações, crie um arquivo de configuração para o certificado.
+
+No diretório config crie um novo arquivo de configuração para o certificado baseado no cert_template.conf.
+
+	cp config/cert_template.conf config/cert_meuprimeirossl.conf 
+
+
+Ajuste as variaveis do certificado no novo arquivo conf. E execute o oci-ssl-ctl.sh passando o nome do certificado como parametro:
+
+
+	cd /opt/oci-ssl-ctl/
+
+	./oci-ssl-ctl.sh meuprimeirossl
+
+Acompanhe a execução do script e no final, um novo certificado ssl será criado no compartment definido no arquivo de configuração do certificado.
+
+
+
+
+
