@@ -1,6 +1,5 @@
 # oci-ssl-ctl
 
-
 ## Sobre o Script
 
 O oci-ssl-ctl é um script shell que pode ser usado como ponto de partida para automatizar o processo de emissão e renovação de Certificados SSL Let's Encrypt integrandos ao serviço Certificates da OCI - Oracle Cloud Infraestructure.
@@ -9,7 +8,7 @@ O oci-ssl-ctl é um script shell que pode ser usado como ponto de partida para a
 
 O oci-ssl-ctl.sh utiliza a ferramenta CertBot para integragir com as autoridades certificadoras e promover a emissão e renovação de certificados, por padrão é usada a Let's Encrypt, mas também é possível realizar a emissão de certificados com outras autoridades certificadoras que usam o protocolo ACME.
 
-Para que seja possível a validação dos domínios o Certbot usará um desafio do tipo DNS e o plugin escolhido para essa integração foi o certbot-dns-multi por suportar os principais serviços de DNS, como OCI DNS, AWS Route53, Azure DNS, CloudFlare, entre vários outros.
+Para que seja possível a validação dos domínios o Certbot usará um desafio do tipo DNS e o plugin escolhido para essa integração foi o certbot-dns-multi [https://pypi.org/project/certbot-dns-multi/] por suportar os principais serviços de DNS, como OCI DNS, AWS Route53, Azure DNS, CloudFlare, entre vários outros.
 
 Após o processo de emissão ou renovação do certificado usando o Certbot + Plugin certbot-dns-multi usamos a OCI-CLI para fazer o upload do certificado para o serviço OCI Certificates.
 
@@ -46,10 +45,10 @@ Ajustes Sugestões:
 
 4 - Em Identity e Security > Policy crie uma nova política com o nome oci-ssl-ctl-policies e as seguintes regras, substituindo as variaveis SSL_CERTIFICATES_TARGET_COMPARTMENT_ID e DNS_ZONES_COMPARTMENT_ID pelos OCIDs dos comaprtments correspondentes.
 
-Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
-Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
-Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT
-Allow group Default/oci-ssl-ctl-group to use dns in compartment id $DNS_ZONES_COMPARTMENT
+> Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+> Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+> Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+> Allow group Default/oci-ssl-ctl-group to use dns in compartment id $DNS_ZONES_COMPARTMENT_ID
 
 
 O procedimento de instação leva em consideração ums máquina virtual usando Oracle Linux 9
