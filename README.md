@@ -46,8 +46,11 @@ Ajustes Sugestões:
 4 - Em Identity e Security > Policy crie uma nova política com o nome oci-ssl-ctl-policies e as seguintes regras, substituindo as variaveis SSL_CERTIFICATES_TARGET_COMPARTMENT_ID e DNS_ZONES_COMPARTMENT_ID pelos OCIDs dos comaprtments correspondentes.
 
 Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+
 Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+
 Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in compartment id $SSL_CERTIFICATES_TARGET_COMPARTMENT_ID
+
 Allow group Default/oci-ssl-ctl-group to use dns in compartment id $DNS_ZONES_COMPARTMENT_ID
 
 
