@@ -27,11 +27,11 @@ Para que o script possa integragir com os serviços OCI Certificates e OCI DNS s
 
 Usando o OCI IAM Identity Domain siga os seguintes passos:
 
-1) Crie um grupo para o usuário do serviço:
+1 - Crie um grupo para o usuário do serviço:
 
 	Nome sugerido: oci-ssl-ctl-group
 
-2) Crie uma conta de usuário e adicione essa conta de usuário no grupo criado no passo anterior.
+2 -  Crie uma conta de usuário e adicione essa conta de usuário no grupo criado no passo anterior.
 
 	Nome sugerido: oci-ssl-ctl-user
 
@@ -41,9 +41,9 @@ Usando o OCI IAM Identity Domain siga os seguintes passos:
 	- Use uma conta de e-mail valida para receber eventuais notificações da OCI para esse usuário.
 	- Em "Edit user capabilities" deixe habilitando somente o "API Keys" removendo assim acessos desnecessários.
  
-3) Crie uma API Key para o usuário oci-ssl-ctl-user e salve a chave privada e finger print com muito cuidado, pois essas informações sensiveis serão usadas nos passos seguintes.
+3 -  Crie uma API Key para o usuário oci-ssl-ctl-user e salve a chave privada e finger print com muito cuidado, pois essas informações sensiveis serão usadas nos passos seguintes.
 
-4)  Em "Identity & Security" > "Policies" crie uma nova política com o nome oci-ssl-ctl-policies e adicione as seguintes regras. Se preferir substitia o contexto "in tenancy" pelos compartments correspondentes:
+4 -  Em "Identity & Security" > "Policies" crie uma nova política com o nome oci-ssl-ctl-policies e adicione as seguintes regras. Se preferir substitia o contexto "in tenancy" pelos compartments correspondentes:
 
 	Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in Tenancy  
 	Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in Tenancy  
