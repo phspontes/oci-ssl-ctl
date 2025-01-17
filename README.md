@@ -113,6 +113,12 @@ Ajuste as variaveis do certificado no novo arquivo conf. E execute o oci-ssl-ctl
 Acompanhe a execução do script e no final, um novo certificado ssl será criado no compartment definido no arquivo de configuração do certificado.
 
 
+13 - Uma vez que o certificado ssl foi criado com sucesso, o processo de renovação consiste em executar novamente o script passando como parametro o nome do certificado.
 
 
+	cd /opt/oci-ssl-ctl/
 
+	./oci-ssl-ctl.sh meuprimeirossl
+
+
+14 - E se necessário uma nova versão do certificado será gerada.
