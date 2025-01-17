@@ -52,6 +52,33 @@ Usando o OCI IAM Identity Domain siga os seguintes passos:
 
 Os passos seguintes consideram uma máquina virtual x86 com Oracle Linux 9 
 
-5 - 
+5 - Configuração do TimeZone
+
+	sudo timedatectl set-timezone America/Sao_Paulo  
+
+6 - Atualização dos pacotes do S.O. e após esse processo considere reiniciar o servidor.
+
+	sudo dnf update
+
+7 - Instalação do Python e PIP
+
+	sudo dnf install python3 python3-pip python3-setuptools git -y
+
+8 - Instalação das ferramentas OCI-CLI, Certbot e plugin dns-multi
+
+	pip3 install oci-cli certbot-dns-multi
+
+9 - Faço download 
+
+	sudo git clone https://github.com/phspontes/oci-ssl-ctl.git /opt/oci-ssl-ctl
+
+10 - Ajuste as permissões do diretório conforme seu ambiente
+
+	sudo chown opc.opc /opt/oci-ssl-ctl -R
+	sudo chmod 0700 /opt/oci-ssl-ctl -R
+
+
+
+
 
 
