@@ -78,7 +78,20 @@ Os passos seguintes consideram uma máquina virtual x86 com Oracle Linux 9
 	sudo chmod 0700 /opt/oci-ssl-ctl -R
 
 
-11 - 
+11 - Após instalação é preciso preencher as variaveis nos arquivos de configuração:
 
 
+11.1 - config/global.ini
 
+11.2 - .oci/oci-config
+
+11.3 - .oci/oci_api_key.pem
+
+11.4 - .oci/oraclecloud-dns-multi.ini
+
+
+Se as zonas de DNS estiverem em outro no AWS Route 53, preencha os sequintes arquivos:
+
+11.5 - .oci/aws-config
+
+11.6 - .oci/route53-dns.multi.ini
