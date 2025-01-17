@@ -74,11 +74,11 @@ Os passos seguintes consideram uma máquina virtual x86 com Oracle Linux 9
 
 10 - Ajuste as permissões do diretório conforme seu ambiente
 
-	sudo chown opc.opc /opt/oci-ssl-ctl -R
+	sudo chown opc:opc /opt/oci-ssl-ctl -R
 	sudo chmod 0700 /opt/oci-ssl-ctl -R
 
 
-
+11 - 
 
 
 
