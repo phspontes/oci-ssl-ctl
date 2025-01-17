@@ -50,8 +50,7 @@ Usando o OCI IAM Identity Domain siga os seguintes passos:
 	Allow group Default/oci-ssl-ctl-group to manage leaf-certificate-family in Tenancy  
 	Allow group Default/oci-ssl-ctl-group to use dns in Tenancy  
 
-Os demais passos  procedimento de instação leva em consideração ums máquina virtual usando Oracle Linux 9
-
+Os passos seguintes consideram uma máquina virtual x86 com Oracle Linux 9 
 
 5 - 
 
