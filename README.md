@@ -4,6 +4,8 @@
 
 O oci-ssl-ctl é um script shell que pode ser usado como ponto de partida para automatizar o processo de emissão e renovação de Certificados SSL Let's Encrypt integrandos ao serviço Certificates da OCI - Oracle Cloud Infraestructure.
 
+Uma vez que os certificados ssl estejam no OCI Certificates, eles poderão ser usados nos demais serviços OCI, como nos OCI Load Balancer e OCI API Gateway, por exemplo.
+
 ## Como funciona
 
 O oci-ssl-ctl.sh utiliza a ferramenta CertBot para interagir com as autoridades certificadoras e promover a emissão e renovação de certificados, por padrão, usando a Let's Encrypt, mas também é possível realizar a emissão de certificados com outras autoridades certificadoras que suportam o protocolo ACME.
