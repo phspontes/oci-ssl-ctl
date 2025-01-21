@@ -2,7 +2,7 @@
 
 ## Sobre o Script
 
-O oci-ssl-ctl é um script shell que pode ser usado como ponto de partida para automatizar o processo de emissão e renovação de Certificados SSL Let's Encrypt integrandos ao serviço Certificates da OCI - Oracle Cloud Infraestructure.
+O oci-ssl-ctl é um script shell que pode ser usado como ponto de partida para automatizar o processo de emissão e renovação de Certificados SSL Let's Encrypt integrandos ao serviço Certificates da OCI - Oracle Cloud Infrastructure.
 
 Uma vez que os certificados ssl estejam no OCI Certificates, eles poderão ser usados nos demais serviços OCI, como nos OCI Load Balancer e OCI API Gateway, por exemplo.
 
@@ -17,7 +17,7 @@ Após o processo de emissão ou renovação do certificado usando o Certbot + o 
 
 ## Isenção de responsabilidade
 
-Antes de continuar tenha em mente que a utilização de qualquer script, código ou comandos contidos nesse reposítório é de sua total responsabilidade, não cabendo aos autores dos códigos nenhum ônus sobre qualquer a utilização do conteúdo aqui disponível.
+Antes de continuar tenha em mente que a utilização de qualquer script, código ou comandos contidos nesse repositório é de sua total responsabilidade, não cabendo aos autores dos códigos nenhum ônus sobre qualquer a utilização do conteúdo aqui disponível.
 
 Teste adequadamente todo o conteúdo em ambiente apropriado e integre os scripts de automação a uma infraestrutura de monitoramento, para que seja possível monitorar o funcionamento do processo de automação e para mitigar possíveis falhas que podem ocorrer.
 
@@ -25,7 +25,7 @@ Este não é um aplicativo oficial da Oracle e por isso, não conta com o seu su
 
 ## Procedimento de Instalação
 
-Para que o script possa integragir com os serviços OCI Certificates e OCI DNS siga os seguintes passos:
+Para que o script possa interagir com os serviços OCI Certificates e OCI DNS siga os seguintes passos:
 
 Usando o OCI IAM Identity Domain siga os seguintes passos:
 
@@ -40,12 +40,12 @@ Usando o OCI IAM Identity Domain siga os seguintes passos:
 	Ajustes Sugestões:
 
 	- Desmarque o opção "Use the email address as the username"
-	- Use uma conta de e-mail valida para receber eventuais notificações da OCI para esse usuário.
+	- Use uma conta de e-mail válida para receber eventuais notificações da OCI para esse usuário.
 	- Em "Edit user capabilities" deixe habilitando somente o "API Keys" removendo assim acessos desnecessários.
  
-3 -  Crie uma API Key para o usuário oci-ssl-ctl-user e salve a chave privada e finger print com muito cuidado, pois essas informações sensiveis serão usadas nos passos seguintes.
+3 -  Crie uma API Key para o usuário oci-ssl-ctl-user e salve a chave privada e finger print com muito cuidado, pois essas informações sensíveis serão usadas nos passos seguintes.
 
-4 -  Em "Identity & Security" > "Policies" crie uma nova política com o nome oci-ssl-ctl-policies e adicione as seguintes regras. Se preferir substitia o contexto "in tenancy" pelos compartments correspondentes:
+4 -  Em "Identity & Security" > "Policies" crie uma política com o nome oci-ssl-ctl-policies e adicione as seguintes regras. Se preferir substitua o contexto "in tenancy" pelos compartments correspondentes:
 
 	Allow group Default/oci-ssl-ctl-group to inspect certificate-authority-family in Tenancy  
 	Allow group Default/oci-ssl-ctl-group to use certificate-authority-delegate in Tenancy  
@@ -78,9 +78,10 @@ Os passos seguintes consideram uma máquina virtual x86 com Oracle Linux 9
 
 	sudo chown opc:opc /opt/oci-ssl-ctl -R
 	sudo chmod 0700 /opt/oci-ssl-ctl -R
+	sudo chmod 600 /opt/oci-ssl-ctl/.oci/*
 
 
-11 - Após instalação é preciso preencher as variaveis nos arquivos de configuração:
+11 - Após instalação é preciso preencher as variáveis nos arquivos de configuração:
 
 
 11.1 - config/global.ini
@@ -92,7 +93,7 @@ Os passos seguintes consideram uma máquina virtual x86 com Oracle Linux 9
 11.4 - .oci/oraclecloud-dns-multi.ini
 
 
-Se as zonas de DNS estiverem em outro no AWS Route 53, preencha os sequintes arquivos:
+Se as zonas de DNS estiverem no AWS Route 53, preencha os seguintes arquivos:
 
 11.5 - .oci/aws-config
 
@@ -100,12 +101,12 @@ Se as zonas de DNS estiverem em outro no AWS Route 53, preencha os sequintes arq
 
 12 - Após preencher e validar as informações, crie um arquivo de configuração para o certificado.
 
-No diretório config crie um novo arquivo de configuração para o certificado baseado no cert_template.conf.
+No diretório config crie um arquivo de configuração para o certificado baseado no cert_template.conf.
 
 	cp config/cert_template.conf config/cert_meuprimeirossl.conf 
 
 
-Ajuste as variaveis do certificado no novo arquivo conf. E execute o oci-ssl-ctl.sh passando o nome do certificado como parametro:
+Ajuste as variáveis do certificado no novo arquivo conf. E execute o oci-ssl-ctl.sh passando o nome do certificado como parâmetro:
 
 
 	cd /opt/oci-ssl-ctl/
@@ -115,7 +116,7 @@ Ajuste as variaveis do certificado no novo arquivo conf. E execute o oci-ssl-ctl
 Acompanhe a execução do script e no final, um novo certificado ssl será criado no compartment definido no arquivo de configuração do certificado.
 
 
-13 - Uma vez que o certificado ssl foi criado com sucesso, o processo de renovação consiste em executar novamente o script passando como parametro o nome do certificado.
+13 - Uma vez que o certificado ssl tenha sido criado com sucesso, o processo de renovação consiste em executar novamente o script passando como parâmetro o nome do certificado.
 
 
 	cd /opt/oci-ssl-ctl/
