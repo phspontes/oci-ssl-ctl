@@ -8,6 +8,7 @@ fi
 SCRIPT_DIR=`dirname $0`
 
 if [ -f $SCRIPT_DIR/config/cert_"$1".conf ]; then
+	OCI_PROFILES="DEFAULT"
         source $SCRIPT_DIR/config/cert_"$1".conf
         else
         echo -e "\nConfig file $SCRIPT_DIR/config/cert_$1.conf not found! Please create it based on the cert_template.conf file and run the script again.\n"
@@ -85,6 +86,7 @@ fn_cert_mngr_create_cert () {
                                 --certificate-pem "$CERT" \
                                 --private-key-pem "$KEY" \
                                 --version-name $DATE \
+				--profile "$PROFILE" \
                                 --wait-for-state ACTIVE
 
         fn_cert_mngr_create_cert_status=$?
@@ -97,7 +99,7 @@ fn_cert_mngr_import_cert () {
 
         CERT_ID=`$OCI_CLI_BIN search resource structured-search --config-file $OCI_CLI_CONFIG_FILE \
                 --query-text "query certificate resources where displayName = \"$CM_CERT_NAME\"" \
-                --query 'data.items[*].identifier' | grep 'oci' | xargs `
+                --query 'data.items[*].identifier' --profile "$PROFILE" | grep 'oci' | xargs `
 
         if [ -z $CERT_ID ]; then
                 echo $CM_CERT_NAME não existe!
@@ -119,6 +121,7 @@ fn_cert_mngr_import_cert () {
                                 --private-key-pem "$KEY" \
                                 --version-name $DATE \
                                 --stage $CM_CERT_UPDATE_STATE \
+				--profile "$PROFILE" \
                                 --wait-for-state ACTIVE
 
         fn_cert_mngr_import_cert_status=$?
@@ -135,14 +138,19 @@ main () {
 
 if [ -d $CERT_DIR ]; 
 		then
-                	fn_certbot_renew_cert
+                 	fn_certbot_renew_cert
         	else
-                	fn_certbot_create_cert
+                 	fn_certbot_create_cert
 fi
 
 for CTL_FILE in `ls $SCRIPT_DIR/temp/*.DO_UPDATE 2> /dev/null`; do
 
-        fn_cert_mngr_import_cert
+
+		for PROFILES in $OCI_PROFILES; do
+        		PROFILE=$PROFILES; 	
+			fn_cert_mngr_import_cert
+
+		done
         
 	if [ $? = "0" ] ; then
                 mv $CTL_FILE $CTL_FILE"_"$DATE"_SUCESS"
